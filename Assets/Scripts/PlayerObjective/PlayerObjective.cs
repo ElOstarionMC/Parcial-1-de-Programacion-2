@@ -5,7 +5,7 @@ public class PlayerObjective : MonoBehaviour
     [SerializeField] float maxDistance = 1.5f;
     [SerializeField] AudioClip testSound;
     [SerializeField] private int scoreClickOnObjective = 3;
-    [SerializeField] private int scoreFailClickOnObjective = 3;
+    [SerializeField] private int scoreFailClickOnObjective = 2;
     Vector2 selfPos;
     Vector2 mousePos;
     Vector2 randomPos;
