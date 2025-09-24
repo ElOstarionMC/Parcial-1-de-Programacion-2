@@ -10,8 +10,8 @@ public class ScreenController : MonoBehaviour
     private static Vector2 randomInScreenPosition;
     private static float inScreenX = 0;
     private static float inScreenY = 0;
-    private static float maxInScreenY = 4.0f;
-    private static float maxInScreenX = 8.0f;
+    private static float maxInScreenY = 3.5f;
+    private static float maxInScreenX = 7.5f;
 
     
     private static Vector2 randomOutScreenPosition;
