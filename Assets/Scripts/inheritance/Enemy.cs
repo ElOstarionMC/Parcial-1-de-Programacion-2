@@ -4,22 +4,26 @@ public class Enemy : EnemyAiMovement
 {
     float acceleration = 1.35f;
     float deceleration = 1.00f;
+    float actualDamageToScore = 0;
     void Start()
     {
         SetMinimalDistanceOfFollow(20f);
         SetAcceletationAndDeceleration(acceleration, deceleration);
-        // MoveOutOfScreen(transform);
+        MoveOutOfScreen(transform);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        CalculateTotalDamage();
+        actualDamageToScore = CalculateTotalDamage();
         FollowPlayer(transform);
     }
     
     void OnCollisionEnter2D(Collision2D collision)
     {
-        MoveOutOfScreen(transform);
+        if (collision.gameObject.GetComponent<EnemyTwo>() == null)
+        {
+            MoveOutOfScreen(transform);
+            ScoreManager.Instance.RemoveScore(actualDamageToScore);
+        }
     }
 }

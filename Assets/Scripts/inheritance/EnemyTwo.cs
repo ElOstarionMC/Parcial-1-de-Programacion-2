@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class EnemyTwo : EnemyAiMovement
 {
@@ -10,10 +9,9 @@ public class EnemyTwo : EnemyAiMovement
     {
         SetMinimalDistanceOfFollow(20f);
         SetAcceletationAndDeceleration(acceleration, deceleration);
-        // MoveOutOfScreen(transform);
+        MoveOutOfScreen(transform);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         actualDamageToScore = CalculateTotalDamage();
@@ -22,14 +20,17 @@ public class EnemyTwo : EnemyAiMovement
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        MoveOutOfScreen(transform);
+        if (collision.gameObject.GetComponent<Enemy>() == null)
+        {
+            MoveOutOfScreen(transform);
+            ScoreManager.Instance.RemoveScore(actualDamageToScore);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         MoveOutOfScreen(transform);
-        ScoreManager.Instance.RemoveScore(actualDamageToScore);
-        
+        ScoreManager.Instance.RemoveScore(actualDamageToScore);        
     }
 
 }

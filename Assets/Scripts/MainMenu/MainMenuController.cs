@@ -7,7 +7,7 @@ public class MainMenuController : MonoBehaviour
     {
         // Main_Level
         // Test_Room         
-        SceneManager.LoadScene("Test_Room");
+        SceneManager.LoadScene("Main_Level");
     }
 
 }
