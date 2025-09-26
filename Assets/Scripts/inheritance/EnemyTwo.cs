@@ -7,7 +7,7 @@ public class EnemyTwo : EnemyAiMovement
     float actualDamageToScore = 0;
     void Start()
     {
-        SetMinimalDistanceOfFollow(20f);
+        SetMinimalDistanceOfFollow(40f);
         SetAcceletationAndDeceleration(acceleration, deceleration);
         MoveOutOfScreen(transform);
     }

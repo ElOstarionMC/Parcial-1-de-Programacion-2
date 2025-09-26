@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class ScreenController : MonoBehaviour
     private static float maxInScreenY = 3.5f;
     private static float maxInScreenX = 7.5f;
 
-    
+
     private static Vector2 randomOutScreenPosition;
     private static float outScreenX = 0;
     private static float outScreenY = 0;
@@ -59,6 +60,18 @@ public class ScreenController : MonoBehaviour
         return randomInScreenPosition;
     }
 
+    private static Vector2 randomInScreenPositionForList;
+    Queue<Vector2> randomposition = new Queue<Vector2>();
+
+    public Queue<Vector2> getRandomInScreenPositionQueue()
+    {
+        for (int i = 0; i < 10; i++) {
+            randomInScreenPositionForList = new Vector2(getRandomInScreenX(), getRandomInScreenY());
+            randomposition.Enqueue(randomInScreenPositionForList);
+        }
+        return randomposition;
+    }
+
     // Out Screen
     private float getRandomOutScreenX()
     {
@@ -82,7 +95,6 @@ public class ScreenController : MonoBehaviour
 
         if (bottom)
         {
-            
             outScreenY = UnityEngine.Random.Range(-maxInScreenY * 2f, -maxInScreenY);
             return outScreenY;
         }
@@ -96,6 +108,6 @@ public class ScreenController : MonoBehaviour
     public Vector2 getRandomOutScreenPosition()
     {
         randomOutScreenPosition = new Vector2(getRandomOutScreenX(), getRandomOutScreenY());
-        return  randomOutScreenPosition;
+        return randomOutScreenPosition;
     }
 }
